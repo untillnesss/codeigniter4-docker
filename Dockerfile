@@ -164,7 +164,7 @@ RUN cd /root && \
 	cd gdal-3.4.0 && \
 	./configure \
 	--with-avif \
-	--with-ecw=/usr/local/hexagon \
+#	--with-ecw=/usr/local/hexagon \
 #	--with-libkml=/usr/local/lib \
 	--with-proj=/usr/local \
     --with-libtiff \
@@ -186,7 +186,7 @@ RUN export PATH=/usr/local/bin:$PATH && \
 
 ## Remove installation files
 RUN rm -rf /root/hexagon/ && \
-	rm -rf /root/hexagon.zip && \
+#	rm -rf /root/hexagon.zip && \
 	rm -rf /root/proj-8.2.0/ && \
 	rm -rf /root/proj-8.2.0.tar.gz && \
 	rm -rf /root/install-libkml/ && \
