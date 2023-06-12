@@ -119,18 +119,18 @@ RUN apt remove -y gdal-bin gdal-data libgdal20 && \
 	apt update && apt -y upgrade && \
 	apt install -y libpng-dev libgdal-dev
 
-## Unzip ECW libraries "Desktop Read-Only Redistributable"
-COPY asset/ecw/hexagon.zip /root
-RUN cd /root && \
-	unzip hexagon.zip
+# ## Unzip ECW libraries "Desktop Read-Only Redistributable"
+# COPY asset/ecw/hexagon.zip /root
+# RUN cd /root && \
+# 	unzip hexagon.zip
 
-## Copy new libraries to system folder
-## Rename the newabi library as x64 and move necessary libraries to /usr/local/lib
-RUN cp -r /root/hexagon/ERDAS-ECW_JPEG_2000_SDK-5.5.0/Desktop_Read-Only /usr/local/hexagon && \
-	rm -r /usr/local/hexagon/lib/x64 && \
-	mv /usr/local/hexagon/lib/cpp11abi/x64 /usr/local/hexagon/lib/x64 && \
-	cp /usr/local/hexagon/lib/x64/release/libNCSEcw* /usr/local/lib && \
-	ldconfig /usr/local/hexagon
+# ## Copy new libraries to system folder
+# ## Rename the newabi library as x64 and move necessary libraries to /usr/local/lib
+# RUN cp -r /root/hexagon/ERDAS-ECW_JPEG_2000_SDK-5.5.0/Desktop_Read-Only /usr/local/hexagon && \
+# 	rm -r /usr/local/hexagon/lib/x64 && \
+# 	mv /usr/local/hexagon/lib/cpp11abi/x64 /usr/local/hexagon/lib/x64 && \
+# 	cp /usr/local/hexagon/lib/x64/release/libNCSEcw* /usr/local/lib && \
+# 	ldconfig /usr/local/hexagon
 
 ## Install libspatialite
 RUN apt-get update -y && \
